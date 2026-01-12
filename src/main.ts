@@ -52,8 +52,14 @@ async function bootstrap() {
   );
 
   // CORS
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'https://product-explorer-frontend-iota.vercel.app',
+    process.env.CORS_ORIGIN,
+  ].filter(Boolean);
+
   app.enableCors({
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    origin: allowedOrigins,
     credentials: true,
   });
 

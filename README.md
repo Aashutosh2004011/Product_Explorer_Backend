@@ -2,6 +2,13 @@
 
 Production-ready NestJS backend for the AbleSpace Product Data Explorer platform. Provides RESTful APIs for product exploration with real-time web scraping from World of Books.
 
+## 🔗 Links
+
+- **Live API**: [https://product-explorer-backend-qlnt.onrender.com](https://product-explorer-backend-qlnt.onrender.com)
+- **GitHub Repository**: [https://github.com/Aashutosh2004011/Product_Explorer_Backend](https://github.com/Aashutosh2004011/Product_Explorer_Backend)
+- **Frontend Repository**: [https://github.com/Aashutosh2004011/Product_Explorer_Frontend](https://github.com/Aashutosh2004011/Product_Explorer_Frontend)
+- **API Documentation**: [https://product-explorer-backend-qlnt.onrender.com/api](https://product-explorer-backend-qlnt.onrender.com/api)
+
 ## Table of Contents
 
 - [Features](#features)
