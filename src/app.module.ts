@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { BullModule } from '@nestjs/bullmq';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { NavigationModule } from './modules/navigation/navigation.module';
 import { CategoryModule } from './modules/category/category.module';
 import { ProductModule } from './modules/product/product.module';
@@ -54,5 +56,7 @@ import { ViewHistoryModule } from './modules/view-history/view-history.module';
     ScrapingModule,
     ViewHistoryModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

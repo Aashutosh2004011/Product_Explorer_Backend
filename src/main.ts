@@ -51,16 +51,34 @@ async function bootstrap() {
     }),
   );
 
-  // CORS
-  const allowedOrigins = [
-    'http://localhost:3000',
-    'https://product-explorer-frontend-iota.vercel.app',
-    process.env.CORS_ORIGIN,
-  ].filter(Boolean);
-
+  // CORS - Allow localhost and all Vercel deployments
   app.enableCors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+
+      const allowedOrigins = [
+        'http://localhost:3000',
+        'http://localhost:3001',
+        process.env.CORS_ORIGIN,
+      ].filter(Boolean);
+
+      // Allow if origin is in the allowed list
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      // Allow all Vercel preview and production deployments
+      if (origin.includes('.vercel.app')) {
+        return callback(null, true);
+      }
+
+      // Reject other origins
+      callback(new Error('Not allowed by CORS'));
+    },
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
   });
 
   // Swagger
